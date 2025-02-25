@@ -1,4 +1,8 @@
-local DataModule = require(game.ServerScriptService.DataModule)
+--!native
+--!optimize 2
 
-local init = DataModule.logger.new("[INIT]", "DEBUG")
-init:debugf("HELLO WORLD place id = %d", game.PlaceId)
+local st = os.clock()
+
+require(script.buffertest)
+
+print("Tests completed in : ", os.clock() - st)
