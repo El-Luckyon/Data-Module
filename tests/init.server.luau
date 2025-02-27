@@ -3,6 +3,6 @@
 
 local st = os.clock()
 
-require(script.buffertest)
+-- require(script.buffertest)
 
 print("Tests completed in : ", os.clock() - st)

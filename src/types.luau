@@ -1,22 +1,32 @@
 export type key = string
 export type uuid = string | number
 
+export type write<T> = (value : T, size : number?) -> ()
+export type read<T> = (buffer : buffer, cursor : number, size : number?) -> T
+export type map<T> = {[key] : dataType<T>}
+
 export type dataType<T> = {
-    write : (buffer : buffer, cursor : number, value : T, size : number?) -> (),
-    read : (buffer : buffer, cursor : number, size : number?) -> T,
-    size : (sample : T) -> number,
+    write : write<T>,
+    read : read<T>,
+    sample : T,
+    id : string,
 }
 
-export type schemaMeta = {
+export type change = {
+    key : string,
+    action : "ADDED" | "REMOVED" | "CHANGED",
+    dataType : dataType<any>,
+}
 
+export type changeLog = {change}
+
+export type schemaMeta = {
+    latestVersion : number,
+    base : map<any>,
 }
 
 export type schema = {
     
-}
-
-export type dataType = {
-
 }
 
 export type Group<T> = {
